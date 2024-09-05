@@ -1,0 +1,19 @@
+.faq-con{
+    padding: 30px;
+    
+}
+.title1{
+    font-family: serif;
+    font-size: 30px;
+    font-weight: 550;
+    text-align: center;
+}
+.msg{
+    opacity: 0.5;
+}
+.fqas{
+    margin-top: 30px;
+    max-height: 30rem;
+    overflow: auto;   
+    overflow-y: scroll;
+}

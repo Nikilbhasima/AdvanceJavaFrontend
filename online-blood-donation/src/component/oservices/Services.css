@@ -1,0 +1,79 @@
+.objective{
+    padding-top: 10% !important;
+    padding-left: 10% !important;
+    padding-bottom: 10% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.p1{
+    font-size: 45px;
+    font-weight: 900;
+    line-height: 55px;
+}
+
+.p1_s{
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.p2{
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 30px;
+
+}
+
+.ad{
+    font-size: 18px;
+    font-weight: 500;
+    color: #cf3d3c;
+}
+.c-btn{
+    border-radius: 100% !important;
+}
+.btn-con{
+    display: flex;
+    gap: 5px;
+}
+.img-con{
+    position: relative;
+}
+.giving-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.s-con{
+    padding:7% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #faebd7;
+}
+.p3{
+    text-align: center;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 1px;
+   
+}
+
+.p4{
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+}
+.s2-con{
+    position: relative;
+}
+.vid{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

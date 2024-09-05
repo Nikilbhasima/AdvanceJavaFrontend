@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.our-service-heading{
+    font-family: serif;
+    font-size: 30px;
+    font-weight: 550;
+    text-align: center;
+}
+.services-c{
+    padding: 70px 110px 30px 110px;
+}
+
+.our-service{
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px black;
+    transition: all 0.5s ease-in-out;
+}
+.our-service:hover{
+    transform: scale(1.1);
+}
+
+.ancher-service{
+    padding: 10px 70px;
+}
+.service-icon{
+    font-size: 123px;
+    color: #E33629;
+}
+.service-name{
+    padding-top: 5px;
+    font-family: serif;
+    font-size: 16px;
+    color: black;
+}
+
+@media(max-width:1191px){
+    .service-icon{
+        font-size: 90px;
+    }
+}

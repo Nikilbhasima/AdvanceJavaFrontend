@@ -1,0 +1,101 @@
+.loginCon{
+    padding: 40px;
+}
+.loginForm{
+    padding: 30px ;
+}
+.leftCon{
+    
+    position: relative;
+    overflow: hidden;
+}
+.loginFront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+/* .rightCon{
+    background-color: yellow;
+} */
+/* ===================================== */
+.topLayer{
+    display: flex;
+    align-items: center;
+    
+}
+.loginTitle{
+    margin: auto;
+    font-size: 25px;
+    font-weight: 550;
+    font-family: serif;
+}
+.inputField{
+    width: 100%;
+}
+
+.formCon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 30px 20px 30px;
+}
+
+.divider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 19px;
+}
+.line{
+    background-color: black;
+    height: 1px;
+    width: 90px;
+}
+.other{
+    font-size: 16px;
+    font-family: serif;
+}
+
+.register{
+    text-align: center;
+    font-size: 14px;
+    font-family: serif;
+}
+.otherApp{
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 60%;
+}
+.logo{
+    width: 20px;
+}
+
+.appName{
+    font-size: 16px;
+    font-family: serif;
+}
+.sG{
+    color: blue;
+}
+
+@media(max-width:742px){
+    .leftCon{
+        height: 10rem;
+        border-radius: 10px 10px 0 0 !important;
+    }
+    .loginFront{
+        object-position: 80%;
+        object-fit: cover;
+    }
+    .rightCon{
+        border-radius: 0 0 10px 10px !important;
+    }
+}

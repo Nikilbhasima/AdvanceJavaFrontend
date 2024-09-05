@@ -1,0 +1,46 @@
+.con{
+    border-radius: 10px;
+    
+}
+.logo-img{
+    width: 124px;
+    border-radius: 50%;
+}
+.top-nav{
+    /* box-shadow: 0 2px 5px black; */
+    background-color: #CF3D3C;
+    padding: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.app_name{
+    color: #fff;
+    font-family: serif; 
+}
+.nav-link{
+    font-size: 16px;
+    font-family: serif;
+    width: fit-content;
+    position: relative;
+    font-weight: 550;
+    color: #fff;
+}
+.nav-link::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    transition: all 1s ease-in-out;
+    transform-origin: left;
+}
+.nav-link:hover::after{
+    width: 100%;
+    transform-origin: left;
+}
+.buttons{
+        display: flex;
+        gap: 30px;
+}

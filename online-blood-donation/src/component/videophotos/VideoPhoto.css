@@ -1,0 +1,18 @@
+.vp-con{
+    padding: 20px;
+}
+.vp-title{
+    font-family: serif;
+    font-weight: 550;
+    font-size: 30px;
+    text-align: center;
+}
+.pic{
+    width: 100%;
+}
+.anc{
+    color: #E33629;
+    font-size: 16px;
+    font-family: serif;
+    margin-left: auto;
+}

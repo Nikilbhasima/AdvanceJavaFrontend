@@ -1,0 +1,17 @@
+.title-am{
+    font-family: serif;
+    font-size: 20px;
+    font-weight: 550;
+    margin: 0;
+}
+.sub-title{
+    font-family: serif;
+    font-size: 13px;
+    opacity: 0.5;
+    margin: 0;
+}
+.ambulanceInfoCon{
+    height: 45vh;
+    overflow: auto;
+
+}

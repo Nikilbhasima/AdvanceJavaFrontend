@@ -1,0 +1,92 @@
+.me-2{
+    font-size: 16px;
+}
+
+.footer-body{
+    /* padding-top: 30px; */
+    font-family: serif;
+    font-size: 16px;
+    background-color: #3B3B3B;
+}
+.footer-con{
+    padding: 30px 0;
+}
+.logo-img{
+    width: 130px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px black;
+    object-fit: contain;
+}
+.app-name{
+    color: #fff;
+    font-family: serif;
+}
+.title{
+    font-size: 20px;
+    font-weight: 550;
+    color: #fff;
+}
+.footer-header{
+    font-size: 20px;
+    font-family: serif;
+    line-height: 30px;
+    color: #fff;
+}
+.numbers{
+    font-family: serif;
+    font-size: 16px;
+    opacity: 0.5;
+    line-height: 25px;
+    color: #fff;
+}
+
+.quick-link{
+    list-style-type: none;
+    padding: 0;
+
+}
+.quick-a{
+    text-decoration: none;
+    color: #fff !important; 
+    opacity: 0.5;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    line-height: 25px;
+    position: relative;
+    transition: all 0.5s ease-in;
+}
+.quick-a:hover{
+    opacity: 1;
+}
+.quick-a::after{
+    content: "";
+    position: absolute;
+    display: block;
+    background-color: #fff;
+    width: 0;
+    height: 2px;
+    transition: all 0.5s ease-in;
+    transform-origin: left;
+}
+.quick-a:hover:after{
+    width: 100%;
+    transform-origin: left;
+}
+
+
+.socila-media{
+    display: flex;
+    gap: 10px;
+}
+.footer-icon{
+    font-size: 30px !important;
+    color: #fff !important;
+}
+
+@media(max-width:979px){
+    .sub-footer-con{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

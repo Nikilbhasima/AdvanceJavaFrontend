@@ -1,0 +1,18 @@
+.into-title{
+    font-size: 20px;
+    font-family: serif;
+    font-weight: 550;
+}
+.mmm{
+    display: flex;
+    flex-direction: column;
+    gap: 10PX;
+    font-family: serif;
+}
+.description{
+    font-size: 16px;
+}
+
+.program-img{
+    width: 100%;
+}

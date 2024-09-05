@@ -1,0 +1,10 @@
+.title1{
+    font-size: 20px;
+    font-family: serif;
+    font-weight: 550;
+    align-items: center;
+}
+.partCampaign{
+    height: 50vh;
+    overflow: auto;
+}

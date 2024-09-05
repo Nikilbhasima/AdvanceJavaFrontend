@@ -1,0 +1,16 @@
+.top{
+    font-family: serif;
+    font-size: 20px;
+}
+.campaign-con{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.entity{
+    font-size: 16px;
+    font-family: serif;
+}
+.sub-entity{
+    font-weight: 550;
+}

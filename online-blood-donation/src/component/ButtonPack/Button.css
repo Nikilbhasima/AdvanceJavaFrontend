@@ -1,0 +1,49 @@
+.click-btn {
+    border: 10px;
+    padding: 12px 32px;
+    font-size: 16px;
+    font-family: serif;
+    font-weight: 550;
+    width: fit-content;
+    border-radius: 30px;
+}
+
+.Login {
+    transition: all 0.5s ease-in-out;
+    border: 2px solid #fff;
+}
+
+.Login:hover {
+    transform: scale(1.1);
+    background-color: #fff !important; /* Change to white on hover */
+    color: #DE1C1C !important; /* Change text color to red on hover */
+    border-color: black;
+}
+
+.Register {
+    transition: all 0.5s ease-in-out;
+}
+
+.Register:hover {
+    transform: scale(1.1);
+    background-color: #DE1C1C !important; /* Change to red on hover */
+    color: #fff !important; /* Change text color to white on hover */
+}
+.Read{
+    transition: all 0.5s ease-in-out; 
+}
+.Read:hover{
+    transform: scale(1.1);
+    background-color: #fff !important; /* Change to white on hover */
+    color: #DE1C1C !important; /* Change text color to red on hover */
+}
+.Registeration{
+    transition: all 0.5s ease-in-out;
+    border: 2px solid #fff;
+}
+.Registeration:hover{
+    transform: scale(1.1);
+    background-color: #fff !important; /* Change to white on hover */
+    color: #DE1C1C !important; /* Change text color to red on hover */
+    border-color: black;
+}
