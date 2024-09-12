@@ -27,13 +27,10 @@
     padding-top: 15px;
     display: flex;
     flex-direction: column;
-    gap:30px;
+    gap:20px;
     
 }
 
-.btnCon{
-    margin-top: 20px;
-}
 
 @media(max-width:998px){
     .leftCon{

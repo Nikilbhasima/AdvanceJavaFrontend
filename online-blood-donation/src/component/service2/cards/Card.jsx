@@ -3,8 +3,9 @@ import './Card.css'
 import { Row } from 'react-bootstrap'
 import request from '../../../assets/request.jpg'
 import CustomButton from '../../ButtonPack/CustonButtton'
+import { Link } from 'react-router-dom'
 
-function Card({title,description,imgCon}) {
+function Card({title,description,imgCon,path}) {
     const loginBtnProperty={
         backGround:"#DE1C1C",
         name:"Add",
@@ -19,7 +20,10 @@ function Card({title,description,imgCon}) {
         <Row className='p-0 m-0 infoCon'>
         <p className='p-0 m-0 p1'>{title}</p>
         <p className='p-0 m-0 p2 mb-3'>{description}</p>
+        <Link to={`/${path}`}>
         <CustomButton buttonName={loginBtnProperty} />
+        </Link>
+       
         </Row>
     </div>
   )

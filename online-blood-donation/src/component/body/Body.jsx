@@ -7,6 +7,7 @@ import VideoPhoto from '../videophotos/VideoPhoto'
 import Services from '../oservices/Services'
 import Desc from '../description2.0/Desc'
 import Service2 from '../service2/Service2'
+import Footer from '../footer/Footer'
 
 function Body() {
   return (
@@ -19,6 +20,7 @@ function Body() {
     <Desc/>
     <VideoPhoto/>
     <FAQ/>
+    <Footer/>
     </>
   )
 }

@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap'
 import { FaLocationDot } from "react-icons/fa6";
 
 
-function CampaignDetail({name,location,veneue,time,date,phone,gmail}) {
+function CampaignDetail({name,location,veneue,time,date,phone,gmail,ending}) {
   return (
 
     <div className='border campaign-con mt-3'>
@@ -19,7 +19,7 @@ function CampaignDetail({name,location,veneue,time,date,phone,gmail}) {
                 <p className='entity'><span className='sub-entity'  >Venue:</span> {veneue}</p>
                 </Col>
                 <Col>
-                <p className='entity'><span className='sub-entity'>Time:</span>{time}</p>
+                <p className='entity'><span className='sub-entity'>Time:</span>{time}-{ending}</p>
                 </Col>
             </Row>
             <Row>

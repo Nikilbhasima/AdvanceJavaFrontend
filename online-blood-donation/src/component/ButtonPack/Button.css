@@ -15,8 +15,8 @@
 
 .Login:hover {
     transform: scale(1.1);
-    background-color: #fff !important; /* Change to white on hover */
-    color: #DE1C1C !important; /* Change text color to red on hover */
+    background-color: #fff !important;
+    color: #DE1C1C !important; 
     border-color: black;
 }
 
@@ -26,16 +26,16 @@
 
 .Register:hover {
     transform: scale(1.1);
-    background-color: #DE1C1C !important; /* Change to red on hover */
-    color: #fff !important; /* Change text color to white on hover */
+    background-color: #DE1C1C !important;
+    color: #fff !important; 
 }
 .Read{
     transition: all 0.5s ease-in-out; 
 }
 .Read:hover{
     transform: scale(1.1);
-    background-color: #fff !important; /* Change to white on hover */
-    color: #DE1C1C !important; /* Change text color to red on hover */
+    background-color: #fff !important;
+    color: #DE1C1C !important;
 }
 .Registeration{
     transition: all 0.5s ease-in-out;
@@ -43,7 +43,18 @@
 }
 .Registeration:hover{
     transform: scale(1.1);
-    background-color: #fff !important; /* Change to white on hover */
-    color: #DE1C1C !important; /* Change text color to red on hover */
+    background-color: #fff !important; 
+    color: #DE1C1C !important; 
     border-color: black;
+}
+
+.Request{
+    transition: all 0.5s ease;
+}
+.Request:hover{
+    /* transform: scale(1.1); */
+    background-color: #fff !important; 
+    color: #DE1C1C !important;
+    border-color: black;
+    border: 2px solid red;
 }

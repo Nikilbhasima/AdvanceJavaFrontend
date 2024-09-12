@@ -38,7 +38,7 @@ function Services() {
               <CustomButton buttonName={loginBtnProperty} className="m-0 c-btn"/>
             </div>
             </Col>
-            <Col className='img-con m-0 p-0' lg={6}>
+            <Col className='img-con m-0 p-0 '  lg={6}>
             <img src={give} alt="" className='giving-img'/>
             </Col>
 

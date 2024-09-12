@@ -1,0 +1,38 @@
+.dataCon{
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.carBac{
+    background-color:#3771C8;
+    padding: 13px;
+    border-radius: 50%;
+}
+.carIcon{
+    font-size: 45px;
+}
+
+.pt{
+    font-size: 25px;
+    font-family: serif;
+    line-height: 30px;
+}
+.p24{
+    font-size: 17px;
+    font-family: serif;
+    font-weight: 550;
+}
+.p25{
+    font-size: 14px;
+    font-family: serif;
+    font-weight: 550;
+}
+
+.spanD{
+    font-weight: 100;
+    color: black !important;
+}
+
+.infoCons{
+    padding: 10px;
+}

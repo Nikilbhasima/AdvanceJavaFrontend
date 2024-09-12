@@ -1,16 +1,26 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Registration.css';
 import TextField from '@mui/material/TextField';
-import { Col, Container, Row } from 'react-bootstrap';
-import { FormControl, IconButton, InputAdornment, InputLabel, MenuItem, Select } from '@mui/material';
+import { Col, Container, FormLabel, Row } from 'react-bootstrap';
+import { FormControl, FormControlLabel, IconButton, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select } from '@mui/material';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import CustomButton from '../ButtonPack/CustonButtton';
 import registration from '../../assets/registration.jpg'
 import axios from 'axios';
+import { FaArrowLeft } from "react-icons/fa6";
+import { Link, useNavigate } from 'react-router-dom';
 
 function Registration() {
   
+  const loginBtnProperty = {
+    backGround: "#DE1C1C",
+    name: "Registeration",
+    hoverColor: "#fff",
+    fontColor: "#fff"
+    };
+  const navigation=useNavigate()
+  const [address,SetAddress]=useState([])
   const [visible, setVisible] = useState(false);
   const [visible1, setVisible1] = useState(false);
   const [userDetail, setUserDetail] = useState({
@@ -21,10 +31,10 @@ function Registration() {
     phone: "",
     gmail: "",
     password: "",
-    confirm: ""
+    confirm: "",
+    gender:""
   });
 
-  // State to handle errors
   const [errors, setErrors] = useState({
     username: "",
     bloodGrp: "",
@@ -33,34 +43,31 @@ function Registration() {
     phone: "",
     gmail: "",
     password: "",
-    confirm: ""
+    confirm: "",
+    gender:""
   });
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     const newErrors = {};
   
-    // Required fields
     for (const [key, value] of Object.entries(userDetail)) {
       if (!value) newErrors[key] = "This field is required";
     }
-  
-    // Phone number validation
+
     if (userDetail.phone.length !== 10 || isNaN(userDetail.phone)) {
       newErrors.phone = "Phone number must be 10 digits.";
     }
   
-    // Email validation
     if (!/\S+@\S+\.\S+/.test(userDetail.gmail)) {
       newErrors.gmail = "Invalid email address.";
     }
   
-    // Password length validation
     if (userDetail.password.length < 8) {
       newErrors.password = "Password must be at least 8 characters long.";
     }
   
-    // Password match validation
     if (userDetail.password !== userDetail.confirm) {
       newErrors.confirm = "Passwords do not match.";
     }
@@ -68,14 +75,17 @@ function Registration() {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
-      // No validation errors, proceed with data submission
+      
       try {
-        const response = await axios.post('http://localhost:8080/api/insertData', userDetail);
+        console.log("why is this error occuring")
+        const response = await axios.post('http://localhost:8080/api/setUser', userDetail, {
+          headers: {
+            'Content-Type': 'application/json'  // Explicitly set Content-Type
+        },
+          withCredentials: true,
+        });
         console.log('Data inserted successfully:', response.data);
-  
-        // Optionally, reset form after successful submission
         setUserDetail({
-          // reset the form fields here if needed
           username: '',
           bloodGrp:'',
           address:'',
@@ -83,12 +93,14 @@ function Registration() {
           phone: '',
           gmail: '',
           password: '',
-          confirm: ''
+          confirm: '',
+          gender:''
         });
-        setErrors({}); // Clear errors
+        setErrors({}); 
+        navigation("/login")
       } catch (error) {
+        console.log("what is the error")
         console.error('Error inserting data:', error);
-        // Optionally, handle error state here
         setErrors({ submit: 'Failed to submit form. Please try again.' });
       }
     }
@@ -111,13 +123,23 @@ function Registration() {
     </InputAdornment>
   );
 
-  // this is for styling the button
-    const loginBtnProperty = {
-    backGround: "#DE1C1C",
-    name: "Registeration",
-    hoverColor: "#fff",
-    fontColor: "#fff"
-    };
+    useEffect(()=>{
+      console.log("first")
+      const fetchAddresses = async () => {
+        try {
+          const response = await axios.get('http://localhost:8080/api/address', {
+            withCredentials: true, // include credentials
+          });
+          SetAddress(response.data)
+          console.log('Data retrieved successfully:', response.data);
+          
+        } catch (err) {
+          console.error('Data not retrieved:', err);
+        }
+      };
+  
+      fetchAddresses();
+    },[])
 
   return (
     <Container>
@@ -126,8 +148,11 @@ function Registration() {
           <img src={registration} alt="regsitration img"  className='regImg'/>
         </Col>
         <Col className='border rightCon' lg={5}>
-          <div className='top-layer'>
-            <p className='registrationTitle'>Registration</p>
+          <div className='top-layer d-flex align-items-center'>
+            <Link to="/login">
+            <FaArrowLeft style={{ fontSize: '20px' }} />
+            </Link>
+            <p className='registrationTitle m-auto'>Registration</p>
           </div>
           <form className='regForm' onSubmit={handleSubmit}>
             <div className='inputCon d-flex gap-4'>
@@ -172,9 +197,10 @@ function Registration() {
                   onChange={handleChange}
                   error={!!errors.address}
                 >
-                  <MenuItem value="Kathmandu">Kathmandu</MenuItem>
-                  <MenuItem value="Lalitput">Lalitput</MenuItem>
-                  <MenuItem value="Bhaktapur">Bhaktapur</MenuItem>
+                   {address.map((address)=>(
+                      <MenuItem key={address.id} value={address.id}>{address.location}</MenuItem>
+                    )
+                    )}
                 </Select>
                 {errors.address && <p className='error'>{errors.address}</p>}
               </FormControl>
@@ -249,9 +275,22 @@ function Registration() {
                 helperText={errors.confirm}
               />
             </div>
+            <div className='inputCon d-flex '>
+                <FormControl>
+                  <FormLabel style={{fontSize:'16px'}} className='p-0 m-0'>Select Sex</FormLabel>
+                  <RadioGroup name='gender' value={userDetail.gender} onChange={handleChange} className='d-flex flex-row p-0 m-0' >
+                   
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="other" control={<Radio />} label="Other"/>
+                  
+                  </RadioGroup>
+                </FormControl>
+            </div>
             <div className='d-flex justify-content-center btnCon'>
               <CustomButton buttonName={loginBtnProperty} />
             </div>
+            
           </form>
         </Col>
       </Row>

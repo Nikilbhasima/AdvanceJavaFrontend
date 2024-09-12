@@ -1,0 +1,6 @@
+.subRequestCon{
+    padding: 30px;
+    height: 70vh;
+    overflow: hidden;
+    overflow-y: auto;
+}

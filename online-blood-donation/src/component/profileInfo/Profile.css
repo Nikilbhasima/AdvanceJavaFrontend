@@ -1,7 +1,12 @@
 
 .profileCon{
-    height: 58vh;
+    height: 70vh;
     padding: 40px;
+}
+.img-conw{
+    width: 290px;
+    height: 210px;
+
 }
 .profile-picture{
     width: 277px;
