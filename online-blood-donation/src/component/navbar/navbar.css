@@ -18,7 +18,7 @@
     color: #fff;
     font-family: serif; 
 }
-.nav-link{
+.navlink{
     font-size: 16px;
     font-family: serif;
     width: fit-content;
@@ -26,7 +26,7 @@
     font-weight: 550;
     color: #fff;
 }
-.nav-link::after{
+.navlink::after{
     content: "";
     width: 0;
     height: 2px;
@@ -36,7 +36,7 @@
     transition: all 1s ease-in-out;
     transform-origin: left;
 }
-.nav-link:hover::after{
+.navlink:hover::after{
     width: 100%;
     transform-origin: left;
 }

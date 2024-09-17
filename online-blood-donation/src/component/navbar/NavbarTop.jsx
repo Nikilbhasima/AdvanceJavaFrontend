@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,8 +11,10 @@ import LogoImg from 'C:/coding/React-java-frontend/online-blood-donation/src/ass
 import CustomButton from '../ButtonPack/CustonButtton';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../../ProviderContext/AuthProvider';
 function NavbarTop() {
 
+  const {isLogin,setIsLogin}=useContext(AuthContext)
   const navigation=useNavigate()
   const loginBtnProperty={
     backGround:"#DE1C1C",
@@ -32,6 +34,7 @@ function NavbarTop() {
       const response=await axios.post('http://localhost:8080/api/logout',{},{withCredentials: true})
       console.log(response.data)
       if(response.data){
+        setIsLogin(false)
         alert("You are logout")
         navigation("/login")
       }
@@ -54,20 +57,30 @@ function NavbarTop() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link as={Link} to="/" className='nav-link'>Home</Nav.Link>
-            <Nav.Link as={Link} to="profile" className='nav-link'>Profile</Nav.Link>
-            <Nav.Link as={Link} to="history" className='nav-link'>History</Nav.Link>
-            <Nav.Link as={Link} to="aboutUs" className='nav-link'>About Us</Nav.Link>
+            <Nav.Link as={Link} to="/" className='navlink'>Home</Nav.Link>
+
+            {isLogin?(<div className='d-flex'>
+              <Nav.Link as={Link} to="profile" className='navlink'>Profile</Nav.Link>
+              <Nav.Link as={Link} to="history" className='navlink'>History</Nav.Link>
+            </div>):
+            (null)}
+            
+
+
+            <Nav.Link as={Link} to="aboutUs" className='navlink'>About Us</Nav.Link>
           </Nav>
-          <div className="buttons">          
+          <div className="buttons">  
+
+            {isLogin?(<a onClick={handleLogout} >
+            <CustomButton buttonName={RegisterBtnProperty} />
+            </a>):
+            ( <Link to="login"><CustomButton buttonName={loginBtnProperty}/></Link>)}        
            
-           <Link to="login"><CustomButton buttonName={loginBtnProperty}/></Link>
+          
           {/* <Link to="register"><CustomButton buttonName={RegisterBtnProperty}/></Link> */}
 
           {/* <button onClick={handleLogout} style={{background:'transparent',padding:'0'}}> */}
-            <a onClick={handleLogout} >
-            <CustomButton buttonName={RegisterBtnProperty} />
-            </a>
+            
           
           {/* </button> */}
           

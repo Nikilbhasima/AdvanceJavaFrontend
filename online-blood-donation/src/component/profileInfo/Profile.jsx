@@ -361,14 +361,14 @@ console.log(address)
                 <p style={{fontFamily:"serif",fontSize:"16px",opacity:"0.5"}}>Edit Profile</p>
                 <hr />
                 <div className='d-flex justify-content-between align-items-center mt-1'>
-                    <p style={{fontFamily:"serif",fontSize:"16px"}}>Edit password</p>
+                    <p style={{fontFamily:"serif",fontSize:"16px"}}>Edit Profile</p>
                     {/* <CustomButton buttonName={edit} /> */}
                     <Button variant="outlined" onClick={handleClickOpen2}>
                                Change UserDetails
                           </Button>
                 </div>
                 <div className='d-flex justify-content-between align-items-center mt-2'>
-                    <p style={{fontFamily:"serif",fontSize:"16px"}}>Update Profile</p>
+                    <p style={{fontFamily:"serif",fontSize:"16px"}}>Edit Password</p>
                     {/* <CustomButton buttonName={edit} /> */}
                             <Button variant="outlined" onClick={handleClickOpen}>
                                Change Password

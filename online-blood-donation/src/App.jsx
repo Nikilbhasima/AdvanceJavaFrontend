@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Body from './component/body/Body';
 import NavbarTop from './component/navbar/NavbarTop';
@@ -21,41 +21,51 @@ import BecomeDonor from './component/becomeDonor/BecomeDonor';
 import History from './component/history/History';
 import DonationHistory from './component/history/donationHistory/DonationHistory';
 import RequestHistory from './component/history/requestHistory/RequestHistory';
+import Dashboard from './adminComponent/dashboard/Dashboard';
+import SetAmbulance from './adminComponent/setAmbulance/SetAmbulance';
+
+import { Nav } from 'react-bootstrap';
+import SetCampaign from './adminComponent/setCampaign/SetCampaign';
+import { AuthContext } from './ProviderContext/AuthProvider';
+import AdminHome from './adminComponent/adminHome/AdminHome';
 
 
 function App() {
+  // const [role,setRole]=useState("admin")
+  const {role,setRole}=useContext(AuthContext)
   return (
     <>
-    <NavbarTop/> 
-    <Routes>
-      <Route path='/' element={<Body/>}/>
-      <Route path='profile' element={<Profile/>}/>
-      <Route path='campaign' element={<BloodCampaign/>}/>
-      <Route path='register' element={<Registration/>}/>
-      <Route path='login' element={<Login/>}/>
-      <Route path='ambulance' element={<Ambulance/>}/>
-      <Route path='aboutUs' element={<AboutUs/>}/>
-      <Route path='requestDonor' element={<RequestDonor/>}>
-           <Route index element={<SubRequest1/>}/> 
-          <Route path='subRequest1' element={<SubRequest1/>}/>
-          <Route path='subRequest2' element={<SubRequest2/>}/>
-      </Route>
-      <Route path="donate" element={<BecomeDonor/>}/>
-      <Route path='history' element={<History/>}>
-         <Route index element={<RequestHistory/>}/>
-          <Route path="reqHis" element={<RequestHistory/>}/>
-          <Route path="donHis" element={<DonationHistory/>}/>
-      </Route>
-    </Routes>
-    {/* <Footer/> */}
+    {role==="user"?(
+      <div>     
+         <NavbarTop/> 
+          <Routes>
+            <Route path='/' element={<Body/>}/>
+            <Route path='profile' element={<Profile/>}/>
+            <Route path='campaign' element={<BloodCampaign/>}/>
+            <Route path='register' element={<Registration/>}/>
+            <Route path='login' element={<Login/>}/>
+            <Route path='ambulance' element={<Ambulance/>}/>
+            <Route path='aboutUs' element={<AboutUs/>}/>
+            <Route path='requestDonor' element={<RequestDonor/>}>
+                <Route index element={<SubRequest1/>}/> 
+                <Route path='subRequest1' element={<SubRequest1/>}/>
+                <Route path='subRequest2' element={<SubRequest2/>}/>
+            </Route>
+            <Route path="donate" element={<BecomeDonor/>}/>
+            <Route path='history' element={<History/>}>
+              <Route index element={<RequestHistory/>}/>
+                <Route path="reqHis" element={<RequestHistory/>}/>
+                <Route path="donHis" element={<DonationHistory/>}/>
+            </Route>
+          </Routes>
+    </div>
 
-    {/* <Service2/> */}
-    {/* <Services/> */}
-    {/* <Desc/> */}
-    {/* <Login/> */}
-    {/* <Registration/> */}
-    {/* <Ambulance/> */}
-    {/* <RequestDonor/> */}
+    ):(
+      <div style={{overflow:'hidden'}}>
+       <AdminHome/>
+      </div>
+    )}
+    
     </>
   )
 }

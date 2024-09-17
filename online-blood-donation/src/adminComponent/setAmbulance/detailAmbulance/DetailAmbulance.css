@@ -1,0 +1,8 @@
+.tableData2{
+    position: relative;
+    height: 77vh;
+}
+.tableTop2{
+    position: sticky;
+    top: 0;
+}

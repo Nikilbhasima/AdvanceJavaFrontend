@@ -1,0 +1,27 @@
+.p8{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 550;
+    font-family: serif;
+}
+
+.p2{
+    text-align: center;
+    font-size: 16px;
+    font-family: serif;
+}
+
+.numCon{
+    border-radius: 10px;
+    padding: 20px;
+}
+.tableData{
+    position: relative;
+    height:68vh;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.tableTop{
+    position: sticky;
+    top: 0;
+}
