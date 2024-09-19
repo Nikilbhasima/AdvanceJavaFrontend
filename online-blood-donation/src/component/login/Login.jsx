@@ -84,7 +84,8 @@ function Login() {
   
     if (Object.keys(newErr).length > 0) {
       setError(newErr);
-    }else if(newErr.phone==="1234567890" && newErr.password==="admin1234" ){
+    }else if(loginData.phone==="1234567890" && loginData.password==="admin1234" ){
+      console.log("i am calling admin")
       setRole("admin")
     } else {
       try{

@@ -112,6 +112,19 @@ useEffect(()=>{
     }
   },[editRowId,editFormData])
 
+  const getStatus = (campaignDate) => {
+    const currentDate = new Date(); 
+    const campaign = new Date(campaignDate); 
+
+    if (currentDate.getTime() < campaign.getTime()) {
+      return 'Pending';
+    } else if (currentDate.toDateString() === campaign.toDateString()) {
+      return 'Ongoing';
+    } else {
+      return 'Complete';
+    }
+  };
+
   return (
     
     <div>
@@ -151,7 +164,8 @@ useEffect(()=>{
                       <TableCell style={{padding:'0'}}><input type="time" style={{width:'8rem',padding:'5px'}} value={editFormData.starting} onChange={handleChange} name='starting'/></TableCell>
                       <TableCell style={{padding:'0'}}><input type="time" style={{width:'8rem',padding:'5px'}} value={editFormData.ending} onChange={handleChange} name='ending'/></TableCell>  
                       <TableCell style={{padding:'0'}}><input type="text" style={{width:'6rem',padding:'5px'}} value={editFormData.phoneN} onChange={handleChange} name='phoneN'/></TableCell>
-                      <TableCell style={{padding:'0'}}><input type="text" style={{width:'11rem',padding:'5px'}} value={editFormData.gmail} onChange={handleChange} name='gmail'/></TableCell>           
+                      <TableCell style={{padding:'0'}}><input type="text" style={{width:'11rem',padding:'5px'}} value={editFormData.gmail} onChange={handleChange} name='gmail'/></TableCell> 
+                      <TableCell>hello</TableCell>          
                        <TableCell style={{padding:'0'}}><button onClick={handleUpdate}>Update</button></TableCell>
                   </TableRow>
               ):(
@@ -165,7 +179,7 @@ useEffect(()=>{
                 <TableCell >{data.ending}</TableCell>
                 <TableCell >{data.phoneN}</TableCell>
                 <TableCell >{data.gmail}</TableCell>
-                <TableCell >status</TableCell>
+                <TableCell>{getStatus(data.date)}</TableCell>
                  <TableCell className='d-flex gap-3'>
                  <button onClick={()=>handleEditClick(data.id)}>Edit</button>
                    <button onClick={()=>handleDelete(data.id)}>Delete</button>

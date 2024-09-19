@@ -1,0 +1,33 @@
+.hjt{
+    padding: 30px;
+}
+.contactInput{
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+}
+form{
+    padding: 2rem;
+    gap: 1rem;
+}
+.inpCon{
+    position: relative;
+    /* padding: 2rem; */
+}
+.ap11{
+    position: absolute;
+    top: -25px;
+    font-size: 14px;
+    font-family: serif;
+    font-weight: 400;
+
+}
+
+.gbtn{
+ transition: all 0.5s ease-in-out;
+}
+
+.gbtn:hover{
+    scale: 1.1;
+}

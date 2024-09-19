@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './AdminNavbar.css'
 import { Col, Nav, NavLink, Row } from 'react-bootstrap'
 import { FaUserAlt } from "react-icons/fa";
@@ -10,10 +10,15 @@ import { TextField } from '@mui/material';
 import { MdDashboard } from "react-icons/md";
 import { MdCampaign } from "react-icons/md";
 import { FaAmbulance } from "react-icons/fa";
+import { AuthContext } from '../../ProviderContext/AuthProvider';
 
 
 
 function AdminNavbar() {
+  const {role,setRole}=useContext(AuthContext)
+  const handleClick=()=>{
+    setRole(null)
+  }
   return (
     <div className='navCol'>
         <Row>
@@ -27,7 +32,7 @@ function AdminNavbar() {
             <Link to="setAmbulance" element={<SetAmbulance/>} className='al'><FaAmbulance className='icons' />Ambulance</Link>
         </Nav>
 
-        <button className='bu'>LogOut</button>
+        <button className='bu' onClick={handleClick}>LogOut</button>
         
         </Row>
     </div>

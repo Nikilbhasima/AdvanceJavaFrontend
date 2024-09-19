@@ -35,7 +35,64 @@ function App() {
   const {role,setRole}=useContext(AuthContext)
   return (
     <>
-    {role==="user"?(
+
+    {role==null && (
+      <div>
+ <NavbarTop/> 
+      <Routes>
+        <Route path='/' element={<Body/>}/>
+        <Route path='profile' element={<Profile/>}/>
+        <Route path='campaign' element={<BloodCampaign/>}/>
+        <Route path='register' element={<Registration/>}/>
+        <Route path='login' element={<Login/>}/>
+        <Route path='ambulance' element={<Ambulance/>}/>
+        <Route path='aboutUs' element={<AboutUs/>}/>
+        <Route path='requestDonor' element={<RequestDonor/>}>
+            <Route index element={<SubRequest1/>}/> 
+            <Route path='subRequest1' element={<SubRequest1/>}/>
+            <Route path='subRequest2' element={<SubRequest2/>}/>
+        </Route>
+        <Route path="donate" element={<BecomeDonor/>}/>
+        <Route path='history' element={<History/>}>
+          <Route index element={<RequestHistory/>}/>
+            <Route path="reqHis" element={<RequestHistory/>}/>
+            <Route path="donHis" element={<DonationHistory/>}/>
+        </Route>
+      </Routes>
+      </div>
+    )}
+
+    {role==="admin" && (
+      <AdminHome/>
+    )}
+
+    {role==="user" && (
+      <div>
+        <NavbarTop/> 
+          <Routes>
+            <Route path='/' element={<Body/>}/>
+            <Route path='profile' element={<Profile/>}/>
+            <Route path='campaign' element={<BloodCampaign/>}/>
+            <Route path='register' element={<Registration/>}/>
+            <Route path='login' element={<Login/>}/>
+            <Route path='ambulance' element={<Ambulance/>}/>
+            <Route path='aboutUs' element={<AboutUs/>}/>
+            <Route path='requestDonor' element={<RequestDonor/>}>
+                <Route index element={<SubRequest1/>}/> 
+                <Route path='subRequest1' element={<SubRequest1/>}/>
+                <Route path='subRequest2' element={<SubRequest2/>}/>
+            </Route>
+            <Route path="donate" element={<BecomeDonor/>}/>
+            <Route path='history' element={<History/>}>
+              <Route index element={<RequestHistory/>}/>
+                <Route path="reqHis" element={<RequestHistory/>}/>
+                <Route path="donHis" element={<DonationHistory/>}/>
+            </Route>
+          </Routes>
+      </div>
+    )}
+
+    {/* {role==="user"?(
       <div>     
          <NavbarTop/> 
           <Routes>
@@ -64,7 +121,7 @@ function App() {
       <div style={{overflow:'hidden'}}>
        <AdminHome/>
       </div>
-    )}
+    )} */}
     
     </>
   )

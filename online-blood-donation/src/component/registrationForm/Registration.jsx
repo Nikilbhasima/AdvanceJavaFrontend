@@ -84,20 +84,25 @@ function Registration() {
         },
           withCredentials: true,
         });
-        console.log('Data inserted successfully:', response.data);
-        setUserDetail({
-          username: '',
-          bloodGrp:'',
-          address:'',
-          date:'',
-          phone: '',
-          gmail: '',
-          password: '',
-          confirm: '',
-          gender:''
-        });
-        setErrors({}); 
-        navigation("/login")
+        if(response.data==="exist"){
+          alert("Phone number is already exist")
+        }else{
+          console.log('Data inserted successfully:', response.data);
+          setUserDetail({
+            username: '',
+            bloodGrp:'',
+            address:'',
+            date:'',
+            phone: '',
+            gmail: '',
+            password: '',
+            confirm: '',
+            gender:''
+          });
+          setErrors({}); 
+          navigation("/login")
+        }
+       
       } catch (error) {
         console.log("what is the error")
         console.error('Error inserting data:', error);
