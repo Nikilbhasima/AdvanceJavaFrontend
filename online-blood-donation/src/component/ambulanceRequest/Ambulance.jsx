@@ -30,16 +30,10 @@ const filterDataByDistrict = () => {
   console.log("Filtering by district with address:", address);
 
   setFilterData(ambulanceInfo)
-
-  // Make sure the return statement is present in the filter callback
   const filtered = ambulanceInfo.filter((data) =>
     data.address.location.toLowerCase().includes(address.toLowerCase())
   );
-
-  // Update the state with the filtered results
   setFilterData(filtered);
-
-  // Log the filtered results directly instead of the state
   console.log("Filtered data:", filtered);
 };
 

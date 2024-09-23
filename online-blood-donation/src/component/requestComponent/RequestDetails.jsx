@@ -12,19 +12,18 @@ function RequestDetails({requestData}) {
 
 
     const id=requestData.id
-
         const handleDonateBlood=async()=>{
             try{
                 const response=await axios.post(`http://localhost:8080/api/registerDonorRequest/${id}`,{},{withCredentials: true})
                 console.log(response.data)
+                alert("Donation registerd successful")
                 getUserData()
+               
             }catch(err){
                 console.log(err)
                 console.log("you are not recorded")
             }
         }
-
-
 
     const loginBtnProperty={
         backGround:"#DE1C1C",
@@ -61,9 +60,11 @@ function RequestDetails({requestData}) {
             </Row>
             </Col> 
             <Col className=' d-flex justify-content-center align-items-center' lg={2}>
-            <button onClick={handleDonateBlood}>
-            <CustomButton  buttonName={loginBtnProperty}/>
-            </button>
+
+                <a onClick={handleDonateBlood}>
+                <CustomButton  buttonName={loginBtnProperty}/>
+                </a>
+            
             
             </Col>
             

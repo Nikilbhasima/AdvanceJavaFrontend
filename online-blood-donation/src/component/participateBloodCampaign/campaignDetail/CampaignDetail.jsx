@@ -10,7 +10,7 @@ function CampaignDetail({name,location,veneue,time,date,phone,gmail,ending}) {
     <div className='border campaign-con mt-3'>
         <div className='d-flex justify-content-between'>
             <div><p className='top' style={{fontWeight:'550'}}>{name}</p></div>
-            <div><p className='top'><FaLocationDot />{location}</p></div>
+            <div><p className='top d-flex gap-2 align-items-center' style={{textTransform:'uppercase'}}><FaLocationDot />{location}</p></div>
         </div>
         <hr className='mt-0 mb-0'/>
         <Row>

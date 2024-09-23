@@ -20,8 +20,17 @@ function BloodCampaign() {
       try{
         const response=await axios.get('http://localhost:8080/api/campaignData')
         console.log("your collected data is:",response.data)
-        setCampaignInfo(response.data)
-        setChooseLocation(response.data)
+
+        const currentDate = new Date(); 
+
+      const filteredData = response.data.filter(campaign => {
+        const campaignDate = new Date(campaign.date); 
+        return currentDate.toDateString() === campaignDate.toDateString(); 
+      });
+
+        // setCampaignInfo(response.data)
+        setCampaignInfo(filteredData)
+        setChooseLocation(filteredData)
       }catch(err){
         console.log(err)
         console.log("lossing")
@@ -67,7 +76,7 @@ function BloodCampaign() {
         <Col className='partCampaign' lg={7}>
         {
           chooseLocation.map((data)=>(
-            <CampaignDetail key={data.id} name={data.organization} location={data.address.location} veneue={data.venue} time={data.starting} date={data.date} phone={data.phoneN} gmail={data.gmail} ending={data.ending}/>
+            <CampaignDetail key={data.id} name={data.organization} location={data.address} veneue={data.venue} time={data.starting} date={data.date} phone={data.phoneN} gmail={data.gmail} ending={data.ending}/>
           ))
         }
         

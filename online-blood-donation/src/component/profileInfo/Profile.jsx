@@ -75,13 +75,14 @@ function Profile() {
         })
         alert("Profile updated Successfully")
         handleClose2()
+        getUserData()
       }catch(err){
         console.log(err)
         console.log("data didn't each database")
       }
     }
 
-///
+
     // State for the current password input
   const [changePassword, setChangePassword] = useState({
     password: "",
@@ -123,9 +124,7 @@ function Profile() {
   // Handler for submitting the password change form
   const submitChangePassword = (e) => {
     e.preventDefault();
-    // Check if the new password and confirmation match
     if (changePassword2.password === changePassword2.confirm) {
-      // Directly update the password by passing the new value to updatePass function
       updatePass(changePassword2.password);
     } else {
       alert("Please enter the same passwords");
@@ -136,16 +135,15 @@ function Profile() {
   const updatePass = async (newPassword) => {
     try {
       console.log("Attempting to change password:", newPassword);
-      // Send POST request to change the password
       const response = await axios.post('http://localhost:8080/api/changePassword', { password: newPassword }, {
-        withCredentials: true, // Send credentials with the request
+        withCredentials: true, 
       });
 
-      // If response is successful, alert the user and reset state
+
       if (response.data) {
         alert("Password changed successfully");
-        setCredential(false); // Ensure this function is defined elsewhere in your code
-        handleClose(); // Ensure this function is defined elsewhere in your code
+        setCredential(false); 
+        handleClose(); 
         setChangePassword({ password: '' });
         setChangePassword2({ password: '', confirm: '' });
       }
@@ -189,7 +187,8 @@ function Profile() {
         setPreview(URL.createObjectURL(file))
     }
 
-    const handleSubmit=async()=>{
+    const handleSubmit=async(e)=>{
+      e.preventDefault()
         if(!img){
             alert('please select image to upload')
         }
@@ -226,6 +225,7 @@ function Profile() {
               withCredentials: true, 
             })
             setUserDetail(response.data)
+            setChangeDetail(response.data)
         }catch(err){
             console.log(err)
             console.log("data not retrieved")
@@ -299,6 +299,32 @@ console.log(address)
       }
     }
 
+    const [count,setCount]=useState()
+
+    const numberOfRequest=async()=>{
+      try{
+        const response=await axios.get('http://localhost:8080/api/numberOfParticipation',{withCredentials: true})
+        console.log("this is count",response.data)
+        setCount(response.data)
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    const [count1,setCount1]=useState()
+    const numberOfDonation=async ()=>{
+      try{
+        const response=await axios.get('http://localhost:8080/api/numberOfBloodDonation',{withCredentials: true})
+        console.log("how many time participated:",response.data)
+        setCount1(response.data)
+      }catch(err){
+        console.log(err)
+      }
+    }
+useEffect(()=>{
+ numberOfRequest()
+ numberOfDonation()
+},[])
 
 
 
@@ -311,9 +337,9 @@ console.log(address)
                 {imageSrc?<img src={imageSrc} alt="profile picture"  className='profile-picture' />:
                 <img src={preview} alt="profile picture"  className='profile-picture' />
                 }
-                <form onSubmit={handleSubmit} className='d-flex gap-2' encType='multipart/form-data'>
-                    <input type="file" onChange={handleChange} />
-                    <input type="submit" value="Upload Img" />
+                <form onSubmit={handleSubmit} className='d-flex  p-0 m-0' style={{overflow:'hidden'}} encType='multipart/form-data'>
+                    <input type="file" onChange={handleChange} className='p-0 m-0'/>
+                    <input type="submit" value="Upload"   className='p-1 m-0' />
                 </form>
             </div>
             <div class="user-info">
@@ -362,14 +388,12 @@ console.log(address)
                 <hr />
                 <div className='d-flex justify-content-between align-items-center mt-1'>
                     <p style={{fontFamily:"serif",fontSize:"16px"}}>Edit Profile</p>
-                    {/* <CustomButton buttonName={edit} /> */}
                     <Button variant="outlined" onClick={handleClickOpen2}>
                                Change UserDetails
                           </Button>
                 </div>
                 <div className='d-flex justify-content-between align-items-center mt-2'>
                     <p style={{fontFamily:"serif",fontSize:"16px"}}>Edit Password</p>
-                    {/* <CustomButton buttonName={edit} /> */}
                             <Button variant="outlined" onClick={handleClickOpen}>
                                Change Password
                           </Button>
@@ -380,11 +404,11 @@ console.log(address)
                 <hr />
                 <div className='d-flex justify-content-between align-items-center mt-2'>
                     <p style={{fontFamily:"serif",fontSize:"16px"}}>Total Request</p>
-                    <span>10</span>
+                    <span>{count}</span>
                 </div>
                 <div className='d-flex justify-content-between align-items-center mt-2'>
                     <p style={{fontFamily:"serif",fontSize:"16px"}}>Total Blood Donation</p>
-                    <span>10</span>
+                    <span>{count1}</span>
                 </div>
                 <div className='d-flex justify-content-between align-items-center mt-2'>
                     <p style={{fontFamily:"serif",fontSize:"16px"}}>Total Blood Campaign Participation</p>
@@ -402,10 +426,6 @@ console.log(address)
                   <p>Make Yourself available</p>
                   <button style={{background:'red',color:'white'}} onClick={makeAvailable}>Available</button>
                    </div>)}
-             
-              
-              
-              
             </Row>
             </Col>
         </Row>

@@ -19,7 +19,7 @@ function ContactUs() {
         <p style={{textAlign:'center',fontSize:'16px',fontFamily:'serif',fontWeight:'550'}}>Any question or remark? Just write us a message!</p>
         <Row className='d-flex justify-content-center'>
             <Col  lg={6} >
-            <form action="#" className='d-flex justify-content-center flex-column'>
+            <form  className='d-flex justify-content-center flex-column'>
                 <Row className='d-flex justify-content-center'>
                     <Col className='inpCon'>
                     <input type="gmail" className='contactInput' placeholder='Gmail' value={query.gmail} onChange={handleChange} name='gmail'/>

@@ -52,7 +52,6 @@ function CampaignList() {
   const handleUpdateDatabase=async(editFormData1)=>{
     try{
       const response=await axios.put('http://localhost:8080/api/updateCampaignData',editFormData1, {withCredentials: true, })
-      console.log(response.data)
       setCount((pre)=>pre+1)
       alert("table updated successfully")
     }catch(err){
@@ -64,7 +63,6 @@ function CampaignList() {
   const getCampaignList=async()=>{
     try{
       const response=await axios.get('http://localhost:8080/api/campaignData', {withCredentials: true, })
-      console.log("this is campaign Data",response.data)
       setCampaignDetail(response.data)
     }catch(err){
       console.log(err)
@@ -76,7 +74,6 @@ function CampaignList() {
   const getAddress=async()=>{
     try{
         const response = await axios.get('http://localhost:8080/api/address', {withCredentials: true, });
-        console.log("list address",response.data)
         setAddress(response.data)
     }catch(err){
         console.log(err)
@@ -87,7 +84,6 @@ function CampaignList() {
 const handleDelete=async(id)=>{
   try{
     const response=await axios.delete(`http://localhost:8080/api/deleteCampaign/${id}`, {withCredentials: true, })
-    console.log(response.data)
     setCount(pre=>pre+1)
     alert('Campaign deleted successfully')
     console.log(id)
@@ -100,6 +96,7 @@ const handleDelete=async(id)=>{
 useEffect(()=>{
   getCampaignList()
 },[count])
+
   useEffect(()=>{
     getCampaignList()
     getAddress()
@@ -124,6 +121,10 @@ useEffect(()=>{
       return 'Complete';
     }
   };
+
+  const cancel=async ()=>{
+    setEditRowId(null)
+  }
 
   return (
     
@@ -166,7 +167,9 @@ useEffect(()=>{
                       <TableCell style={{padding:'0'}}><input type="text" style={{width:'6rem',padding:'5px'}} value={editFormData.phoneN} onChange={handleChange} name='phoneN'/></TableCell>
                       <TableCell style={{padding:'0'}}><input type="text" style={{width:'11rem',padding:'5px'}} value={editFormData.gmail} onChange={handleChange} name='gmail'/></TableCell> 
                       <TableCell>hello</TableCell>          
-                       <TableCell style={{padding:'0'}}><button onClick={handleUpdate}>Update</button></TableCell>
+                       <TableCell style={{padding:'0'}}><button onClick={handleUpdate}>Update</button>
+                       <button className='ms-2' onClick={cancel}>Cancel</button>
+                       </TableCell>
                   </TableRow>
               ):(
                 <TableRow key={data.id}>               

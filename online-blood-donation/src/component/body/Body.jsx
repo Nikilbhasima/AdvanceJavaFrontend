@@ -12,11 +12,8 @@ import Footer from '../footer/Footer'
 function Body() {
   return (
     <>
-    {/* <Carousal/> */}
     <Services/>
-    {/* <Service/> */}
     <Service2/>
-    {/* <Description/> */}
     <Desc/>
     <VideoPhoto/>
     <FAQ/>

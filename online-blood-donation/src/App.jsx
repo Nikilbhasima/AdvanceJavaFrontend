@@ -63,7 +63,10 @@ function App() {
     )}
 
     {role==="admin" && (
-      <AdminHome/>
+      <div style={{overflow:'hidden'}}>
+        <AdminHome/>
+        </div>
+      
     )}
 
     {role==="user" && (
